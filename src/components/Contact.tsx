@@ -15,15 +15,48 @@ function Contact() {
   const [nameError, setNameError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   const form = useRef();
 
-  const sendEmail = (e: any) => {
+  const sendEmail = async (e: any) => {
     e.preventDefault();
 
     setNameError(name === '');
     setEmailError(email === '');
     setMessageError(message === '');
+
+    if (name && email && message) {
+      setLoading(true);
+      const data = {
+        name: name,
+        contact: email,   // mapping ke Apps Script kamu
+        message: message
+      };
+
+      try {
+        const res = await fetch(process.env.REACT_APP_API_URL as string, {
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+        console.log(result);
+
+        alert("Data berhasil dikirim 🚀");
+
+        // reset form
+        setName('');
+        setEmail('');
+        setMessage('');
+
+      } catch (error) {
+        console.error(error);
+        alert("Gagal kirim data ❌");
+      } finally {
+        setLoading(false);
+      }
+    }
 
     /* Uncomment below if you want to enable the emailJS */
 
@@ -59,6 +92,7 @@ function Contact() {
             ref={form}
             component="form"
             noValidate
+            onSubmit={sendEmail}
             autoComplete="off"
             className='contact-form'
           >
@@ -103,8 +137,13 @@ function Contact() {
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
             />
-            <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
-              Send
+            <Button
+              type="submit"
+              variant="contained"
+              endIcon={!loading && <SendIcon />}
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send"}
             </Button>
           </Box>
         </div>
