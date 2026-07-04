@@ -103,17 +103,33 @@ button {
 }
 
 .MuiInputBase-root {
-  color: #0d1116 !important;
-  background-color: white !important;
+  color: white !important;
+  background-color: #1e1e1e !important;
+
+  fieldset {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  &:hover fieldset {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  &.Mui-focused fieldset {
+    border-color: #5000ca !important;
+  }
 }
 
 .MuiInputBase-input {
-  color: #0d1116 !important;
+  color: white !important;
   background-color: transparent !important;
 }
 
 .MuiFormLabel-root {
-  color: #0d1116 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+
+  &.Mui-focused {
+    color: #5000ca !important;
+  }
 }
 
 .MuiFormHelperText-root {
@@ -125,6 +141,36 @@ button {
 
   .navigation-bar {
     background-color: #f8f9fa;
+  }
+
+  .MuiInputBase-root {
+    color: #0d1116 !important;
+    background-color: white !important;
+
+    fieldset {
+      border-color: rgba(0, 0, 0, 0.23) !important;
+    }
+
+    &:hover fieldset {
+      border-color: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #5000ca !important;
+    }
+  }
+
+  .MuiInputBase-input {
+    color: #0d1116 !important;
+    background-color: transparent !important;
+  }
+
+  .MuiFormLabel-root {
+    color: rgba(0, 0, 0, 0.6) !important;
+
+    &.Mui-focused {
+      color: #5000ca !important;
+    }
   }
 
   p,
