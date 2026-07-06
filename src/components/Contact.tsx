@@ -5,6 +5,11 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogActions from '@mui/material/DialogActions';
 
 function Contact() {
 
@@ -16,6 +21,9 @@ function Contact() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
+
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
 
   const form = useRef();
 
@@ -43,7 +51,9 @@ function Contact() {
         const result = await res.json();
         console.log(result);
 
-        alert("Data berhasil dikirim 🚀");
+        setLoading(false);
+        setDialogMessage("Data berhasil dikirim 🚀");
+        setDialogOpen(true);
 
         // reset form
         setName('');
@@ -52,9 +62,9 @@ function Contact() {
 
       } catch (error) {
         console.error(error);
-        alert("Gagal kirim data ❌");
-      } finally {
         setLoading(false);
+        setDialogMessage("Gagal kirim data ❌");
+        setDialogOpen(true);
       }
     }
 
@@ -80,6 +90,10 @@ function Contact() {
     //   setEmail('');
     //   setMessage('');
     // }
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
   };
 
   return (
@@ -137,17 +151,42 @@ function Contact() {
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
             />
-            <Button
-              type="submit"
-              variant="contained"
-              endIcon={!loading && <SendIcon />}
-              disabled={loading}
-            >
-              {loading ? "Sending..." : "Send"}
-            </Button>
+            <div style={{ display: dialogOpen ? 'none' : 'block' }}>
+              <Button
+                type="submit"
+                variant="contained"
+                endIcon={<SendIcon />}
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Send"}
+              </Button>
+            </div>
           </Box>
         </div>
       </div>
+
+      <Dialog
+        open={dialogOpen}
+        onClose={handleDialogClose}
+        PaperProps={{
+          style: {
+            backgroundColor: '#0d1116',
+            color: 'white',
+          }
+        }}
+      >
+        <DialogTitle>Notification</DialogTitle>
+        <DialogContent>
+          <DialogContentText style={{ color: 'white' }}>
+            {dialogMessage}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose} style={{ color: '#5000ca' }}>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
