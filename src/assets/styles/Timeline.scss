@@ -1,38 +1,92 @@
 .vertical-timeline span {
-    color: white;
-    font-family: 'Courier Prime', monospace;
+    color: #f5f5f5;
+    font-family: 'Inter', sans-serif;
 }
 
 .vertical-timeline p {
-    color: rgb(39, 40, 34);
+    color: #1c1917;
 }
 
 .vertical-timeline-element p {
-    color: rgb(39, 40, 34);
+    color: #1c1917;
 }
 
 .vertical-timeline-element h3 {
-    color: rgb(39, 40, 34);
+    color: #1c1917;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .vertical-timeline-element h4 {
-    color: rgb(39, 40, 34);
+    color: #57534e;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
 }
 
 .vertical-timeline-element span {
-    color: rgb(39, 40, 34);
+    color: #1c1917;
 }
 
 .vertical-timeline-element .vertical-timeline-element-date {
-    color: white;
+    color: #f5f5f5;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem !important;
+}
+
+/* Dark mode timeline content */
+.vertical-timeline-element-content {
+    background: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: none !important;
+}
+
+.vertical-timeline-element-content p {
+    color: #a3a3a3 !important;
+}
+
+.vertical-timeline-element-content-arrow {
+    border-right: 7px solid #1a1a1a !important;
 }
 
 .svg-inline--fa {
     color: white;
 }
 
+.vertical-timeline::before {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Light mode timeline */
+.light-mode {
+    .vertical-timeline-element-content {
+        background: white !important;
+        border: 1px solid #e7e5e4;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .vertical-timeline-element-content p {
+        color: #78716c !important;
+    }
+
+    .vertical-timeline-element-content-arrow {
+        border-right: 7px solid white !important;
+    }
+
+    .vertical-timeline span {
+        color: #1c1917;
+    }
+
+    .vertical-timeline-element .vertical-timeline-element-date {
+        color: #78716c;
+    }
+
+    .vertical-timeline::before {
+        background-color: #e7e5e4 !important;
+    }
+}
+
 @media screen and (max-width: 1170px) {
     .vertical-timeline-element .vertical-timeline-element-date {
-        color: rgb(39, 40, 34);
+        color: #1c1917;
     }
 }

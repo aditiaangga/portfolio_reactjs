@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,8 +15,7 @@ code {
 
 .main-container {
   position: relative;
-  background-color: #0d1116;
-
+  background-color: #0f0f0f;
 }
 
 a {
@@ -24,8 +23,9 @@ a {
 }
 
 a:hover {
-  color: #5000ca;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+  color: #facc15;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 }
 
 p,
@@ -37,35 +37,77 @@ h4,
 h5,
 label,
 button {
-  color: white;
-  font-family: "Lato", sans-serif;
+  color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.3px;
+}
+
+/* ============ NAVIGATION ============ */
 .navigation-bar {
   justify-content: space-between;
-  background-color: #0d1116;
+  background-color: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
   button {
-    font-size: 1.1rem;
-    font-family: "Lato", sans-serif;
+    font-size: 0.9rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
     text-transform: initial;
-    padding: 6px 10px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  button:hover {
+    color: #facc15;
+    background-color: rgba(250, 204, 21, 0.08);
   }
 
   svg {
     cursor: pointer;
+    transition: color 0.2s;
   }
+
+  svg:hover {
+    color: #facc15;
+  }
+}
+
+.nav-logo-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #f5f5f5;
+}
+
+.nav-logo-dot {
+  color: #facc15;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.navbar-fixed-top.scrolled {
+  background-color: rgba(15, 15, 15, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
 }
 
 .navigation-bar-responsive {
-
   span,
   p {
-    color: #0d1116;
-    font-family: "Lato", sans-serif;
+    color: #1c1917;
+    font-family: 'Inter', sans-serif;
   }
 }
 
+/* ============ CONTAINER ============ */
 .container {
   margin-top: 64px;
   width: 100%;
@@ -102,84 +144,120 @@ button {
   justify-content: center;
 }
 
+/* ============ MUI OVERRIDES ============ */
 .MuiInputBase-root {
-  color: white !important;
-  background-color: #1e1e1e !important;
+  color: #f5f5f5 !important;
+  background-color: #1a1a1a !important;
 
   fieldset {
-    border-color: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 
   &:hover fieldset {
-    border-color: rgba(255, 255, 255, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
   }
 
   &.Mui-focused fieldset {
-    border-color: #5000ca !important;
+    border-color: #facc15 !important;
   }
 
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px #2a2a2a inset !important;
-    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0 1000px #1a1a1a inset !important;
+    -webkit-text-fill-color: #f5f5f5 !important;
   }
 }
 
 .MuiInputBase-input {
-  color: white !important;
+  color: #f5f5f5 !important;
   background-color: transparent !important;
 }
 
 .MuiFormLabel-root {
-  color: rgba(255, 255, 255, 0.7) !important;
+  font-family: 'Inter', sans-serif !important;
+  color: rgba(255, 255, 255, 0.5) !important;
 
   &.Mui-focused {
-    color: #5000ca !important;
+    color: #facc15 !important;
   }
 }
 
 .MuiFormHelperText-root {
-  color: #D32F2F !important;
+  color: #ef4444 !important;
 }
 
+/* ============ LIGHT MODE ============ */
 .light-mode {
-  background-color: #f8f9fa;
+  background-color: #fafaf9;
+
+  .main-container {
+    background-color: #fafaf9;
+  }
 
   .navigation-bar {
-    background-color: #f8f9fa;
+    background-color: rgba(250, 250, 249, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    button {
+      color: #1c1917;
+    }
+
+    button:hover {
+      color: #ca8a04;
+      background-color: rgba(202, 138, 4, 0.08);
+    }
+
+    svg:hover {
+      color: #ca8a04;
+    }
+  }
+
+  .nav-logo-text {
+    color: #1c1917;
+  }
+
+  .nav-logo-dot {
+    color: #ca8a04;
+  }
+
+  .navbar-fixed-top.scrolled {
+    background-color: rgba(250, 250, 249, 0.95) !important;
   }
 
   .MuiInputBase-root {
-    color: #0d1116 !important;
+    color: #1c1917 !important;
     background-color: white !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 
     fieldset {
-      border-color: rgba(0, 0, 0, 0.23) !important;
+      border-color: #e7e5e4 !important;
     }
 
     &:hover fieldset {
-      border-color: rgba(0, 0, 0, 0.5) !important;
+      border-color: #d6d3d1 !important;
     }
 
     &.Mui-focused fieldset {
-      border-color: #5000ca !important;
+      border-color: #ca8a04 !important;
     }
 
     input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 1000px #f0f0f0 inset !important;
-      -webkit-text-fill-color: #0d1116 !important;
+      -webkit-box-shadow: 0 0 0 1000px white inset !important;
+      -webkit-text-fill-color: #1c1917 !important;
     }
   }
 
   .MuiInputBase-input {
-    color: #0d1116 !important;
+    color: #1c1917 !important;
     background-color: transparent !important;
   }
 
   .MuiFormLabel-root {
-    color: rgba(0, 0, 0, 0.6) !important;
+    color: rgba(28, 25, 23, 0.5) !important;
 
     &.Mui-focused {
-      color: #5000ca !important;
+      color: #ca8a04 !important;
     }
   }
 
@@ -192,49 +270,49 @@ button {
   h5,
   label,
   button {
-    color: #0d1116;
+    color: #1c1917;
   }
 
   a:hover {
-    color: #5000ca;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    color: #ca8a04;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
   }
 
   .navigation-bar svg {
-    color: #0d1116;
-  }
-
-  .about-section {
-    background-image: url("./assets/images/bg-light.png");
+    color: #1c1917;
   }
 
   .skills-container svg {
-    color: #0d1116;
+    color: #1c1917;
   }
 
   .chip {
-    background-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    background-color: #f5f5f4 !important;
+    box-shadow: none;
+    border: 1px solid #e7e5e4;
   }
 
   .vertical-timeline::before {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: #e7e5e4 !important;
   }
 
   .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   }
 
-  .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
-    color: gray;
+  .vertical-timeline--two-columns
+    .vertical-timeline-element-content
+    .vertical-timeline-element-date {
+    color: #78716c;
   }
 
   .vertical-timeline-element-content-arrow {
-    border-right: 7px solid rgba(0, 0, 0, 0.08) !important;
+    border-right: 7px solid white !important;
   }
 
   .flex-chips .chip-title {
-    color: #0d1116;
+    color: #1c1917;
   }
 }
 

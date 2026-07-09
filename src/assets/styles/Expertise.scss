@@ -5,44 +5,87 @@
     text-align: left;
 
     svg {
-        color: white;
+        color: #f5f5f5;
     }
 }
-  
+
 .skills-container .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
+    grid-gap: 20px;
 }
-  
+
 .skills-container .skills-grid .skill {
     align-items: center;
     text-align: left;
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
 }
-  
+
+.skills-container .skills-grid .skill:hover {
+    transform: translateY(-3px);
+}
+
+/* Colored top bar for each card */
+.skills-container .skills-grid .skill::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+}
+
+.skills-container .skills-grid .skill:nth-child(1)::before { background: #facc15; }
+.skills-container .skills-grid .skill:nth-child(2)::before { background: #f97316; }
+.skills-container .skills-grid .skill:nth-child(3)::before { background: #a855f7; }
+.skills-container .skills-grid .skill:nth-child(4)::before { background: #06b6d4; }
+.skills-container .skills-grid .skill:nth-child(5)::before { background: #ec4899; }
+.skills-container .skills-grid .skill:nth-child(6)::before { background: #22c55e; }
+
+.skills-container .skills-grid .skill svg {
+    font-size: 1.8em;
+    margin-bottom: 12px;
+    color: #f5f5f5;
+    position: relative;
+    z-index: 1;
+}
+
 .chip {
-    color: rgb(39, 40, 34) !important;
-    background-color: white !important;
-    font-size: 0.8rem !important;
-    height: 25px !important;
-  
+    color: #d4d4d4 !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    font-size: 0.7rem !important;
+    height: 24px !important;
+    border-radius: 12px !important;
+    position: relative;
+    z-index: 1;
+
     span {
-        font-family: 'Courier Prime', monospace;
-        color: rgb(39, 40, 34);
+        font-family: 'Inter', sans-serif;
+        color: #d4d4d4;
     }
-  
+
     svg {
-        height: 15px !important;
+        height: 14px !important;
     }
 }
 
 .flex-chips {
     line-height: 2;
     margin: 0.5;
+    position: relative;
+    z-index: 1;
 
     .chip-title {
-        color: white;
+        color: #f5f5f5;
         padding-right: 10px;
+        font-size: 0.8rem;
+        font-family: 'Inter', sans-serif;
     }
 }
 
@@ -51,13 +94,58 @@
 }
 
 .flex-chips .MuiChip-outlined {
-    background-color: #e0e0e0;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+    background-color: rgba(255, 255, 255, 0.05);
+    font-family: 'Inter', sans-serif;
 }
 
 .flex-chips .MuiChip-outlined span {
-    color: rgb(39, 40, 34);
+    color: #d4d4d4;
+}
+
+/* ============ LIGHT MODE ============ */
+.light-mode {
+    .skills-container svg {
+        color: #1c1917;
+    }
+
+    .skills-container .skills-grid .skill {
+        background: white;
+        border: 1px solid #e7e5e4;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .skills-container .skills-grid .skill:nth-child(1)::before { background: #ca8a04; }
+    .skills-container .skills-grid .skill:nth-child(2)::before { background: #ea580c; }
+    .skills-container .skills-grid .skill:nth-child(3)::before { background: #9333ea; }
+    .skills-container .skills-grid .skill:nth-child(4)::before { background: #0891b2; }
+    .skills-container .skills-grid .skill:nth-child(5)::before { background: #db2777; }
+    .skills-container .skills-grid .skill:nth-child(6)::before { background: #16a34a; }
+
+    .skills-container .skills-grid .skill svg {
+        color: #1c1917;
+    }
+
+    .chip {
+        color: #57534e !important;
+        background-color: #f5f5f4 !important;
+        border: 1px solid #e7e5e4;
+    }
+
+    .chip span {
+        color: #57534e;
+    }
+
+    .flex-chips .chip-title {
+        color: #1c1917;
+    }
+
+    .flex-chips .MuiChip-outlined {
+        background-color: #f5f5f4;
+    }
+
+    .flex-chips .MuiChip-outlined span {
+        color: #57534e;
+    }
 }
 
 @media screen {
@@ -67,13 +155,14 @@
             padding-left: 5%;
             padding-right: 5%;
         }
-    
+
         .skills-container .skills-grid {
             display: initial;
         }
-        
+
         .skills-container .skills-grid .skill {
             padding-bottom: 5%;
+            margin-bottom: 16px;
         }
     }
 
